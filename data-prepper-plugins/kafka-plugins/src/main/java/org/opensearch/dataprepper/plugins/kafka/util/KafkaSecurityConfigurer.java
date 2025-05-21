@@ -93,6 +93,9 @@ public class KafkaSecurityConfigurer {
     private static final String CERTIFICATE_CONTENT = "certificateContent";
     private static final String SSL_TRUSTSTORE_LOCATION = "ssl.truststore.location";
     private static final String SSL_TRUSTSTORE_PASSWORD = "ssl.truststore.password";
+    private static final String SSL_KEYSTORE_LOCATION = "ssl.keystore.location";
+    private static final String SSL_KEYSTORE_PASSWORD = "ssl.keystore.password";
+    private static final String SSL_KEY_PASSWORD = "ssl.key.password";
 
     private static AwsCredentialsProvider mskCredentialsProvider;
     private static AwsCredentialsProvider awsGlueCredentialsProvider;
@@ -165,6 +168,9 @@ public class KafkaSecurityConfigurer {
     private static void setTruststoreProperties(final Properties properties, final EncryptionConfig encryptionConfig) {
         properties.put(SSL_TRUSTSTORE_LOCATION, encryptionConfig.getTrustStoreFilePath());
         properties.put(SSL_TRUSTSTORE_PASSWORD, encryptionConfig.getTrustStorePassword());
+        properties.put(SSL_KEYSTORE_LOCATION, encryptionConfig.getKeyStoreFilePath());
+        properties.put(SSL_KEYSTORE_PASSWORD, encryptionConfig.getKeyStorePassword());
+        properties.put(SSL_KEY_PASSWORD, encryptionConfig.getKeyPassword());
     }
 
     public static void setOauthProperties(final KafkaClusterAuthConfig kafkaClusterAuthConfig,
