@@ -25,6 +25,10 @@ RUN mkdir -p /var/log/data-prepper
 ADD $ARCHIVE_FILE /usr/share
 RUN mv /usr/share/$ARCHIVE_FILE_UNPACKED /usr/share/data-prepper
 
+# In case of Windows build it needs to fix new line format (\r to \n)
+RUN dnf -y install dos2unix && \
+    dos2unix $DATA_PREPPER_PATH/bin/data-prepper
+
 COPY default-data-prepper-config.yaml $ENV_CONFIG_FILEPATH
 COPY default-keystore.p12 /usr/share/data-prepper/keystore.p12
 
