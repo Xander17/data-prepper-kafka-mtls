@@ -26,6 +26,15 @@ public class EncryptionConfig {
     @JsonProperty("trust_store_password")
     private String trustStorePassword;
 
+    @JsonProperty("key_store_file_path")
+    private String keyStoreFilePath;
+
+    @JsonProperty("key_store_password")
+    private String keyStorePassword;
+
+    @JsonProperty("key_password")
+    private String keyPassword;
+
     @JsonProperty("insecure")
     private boolean insecure = false;
 
@@ -39,6 +48,18 @@ public class EncryptionConfig {
 
     public String getTrustStoreFilePath() {
         return trustStoreFilePath;
+    }
+
+    public String getKeyStoreFilePath() {
+        return keyStoreFilePath;
+    }
+
+    public String getKeyStorePassword() {
+        return keyStorePassword;
+    }
+
+    public String getKeyPassword() {
+        return keyPassword;
     }
 
     public String getTrustStorePassword() {
